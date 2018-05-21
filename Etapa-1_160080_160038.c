@@ -48,6 +48,7 @@ void aloca_info_casa(info_casa **p, int tam);
 void aloca_prop(prop **p, int tam);
 void cad_prop(prop *p, int num_reg);
 void consulta_prop();
+void grava(prop *p);
 /*void cad_imovel();
 void consulta_imovel();
 */
@@ -145,6 +146,24 @@ void cad_prop(prop *p, int i)
 void consulta_prop(prop *p, int tam){
 
 }
+
+void grava(prop *p)
+{
+    FILE *fp=NULL;
+
+    if((fp=fopen("prop.bin","rb"))==NULL)
+    {
+        printf("\nErro na gravacao\n");
+    }
+    else
+        {
+            fwrite(p,sizeof(prop),1,fp);
+        }
+
+    fclose(fp);
+
+}
+
 /*
 void cad_imovel(prop *p, int tam){
 
